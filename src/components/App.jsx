@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Section } from "./Section/Section";
 import { FeedbackOptions } from "./FeedbackOptions/FeedbackOptions";
 import { Statistics } from "./Statistics/Statistics";
@@ -5,14 +6,11 @@ import { GlobalStyles } from "./GlobalStyles";
 import { Layout } from "./Layout";
 
 
-export const App = ({
-  good: 0,
-  neutral: 0,
-  bad: 0,
-}) => {
+export const App = ({good, neutral, bad}) => {
  
-
-  // const { good, neutral, bad } = this.state;
+  const [ good, setGood ]  = useState(0);
+  const [ neutral,  setNeutral]  = useState(0);
+  const [ bad, setBad ]  = useState(0);
   // const options = ['good', 'neutral', 'bad'];
 
    return (
