@@ -6,19 +6,43 @@ import { GlobalStyles } from "./GlobalStyles";
 import { Layout } from "./Layout";
 
 
-export const App = ({good, neutral, bad}) => {
+export const App = () => {
  
   const [ good, setGood ]  = useState(0);
   const [ neutral,  setNeutral]  = useState(0);
   const [ bad, setBad ]  = useState(0);
-  // const options = ['good', 'neutral', 'bad'];
+  const options = ['good', 'neutral', 'bad'];
+
+  const handleFeedback = (good, neutral, bad) => {
+    if ()
+    setGood(prevState => prevState + 1);
+    setNeutral(prevState => prevState + 1);
+    setBad(prevState => prevState + 1);
+  };
+
+
+  const countTotalFeedback = () => {
+    const total = good + neutral + bad;
+    return total;
+  };
+
+  const countPositiveFeedbackPercentage = () => {
+    const persent = Math.round((good / countTotalFeedback()) * 100);
+    return persent;
+  };
+
+  const  handleReset = () => {
+    setGood(0);
+    setNeutral(0);
+    setBad(0);
+  };
 
    return (
     <Layout>
     <Section title="Please, leave your feedback">
       <FeedbackOptions
-        onChange={this.handleFeedback} 
-        onReset={this.handleReset} 
+        onChange={handleFeedback} 
+        onReset={handleReset} 
         options={options}
       />
     </Section>
@@ -27,8 +51,8 @@ export const App = ({good, neutral, bad}) => {
       good={good} 
       neutral={neutral} 
       bad={bad} 
-      total={this.countTotalFeedback()} 
-      positivePercentage={this.countPositiveFeedbackPercentage()}
+      total={countTotalFeedback()} 
+      positivePercentage={countPositiveFeedbackPercentage()}
       />
     </Section>
     <GlobalStyles/>
